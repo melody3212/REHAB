@@ -8,6 +8,7 @@ import '../assets/css/board.css';
 import '../assets/css/comment.css';
 import Comment from '../components/Comment';
 import { comments as postComment } from '../api/board';
+import PreviousButton from '../components/PreviousButton';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || '';
 
@@ -75,6 +76,7 @@ function MatchqnaPage() {
 
   return (
     <div className="BoardComponent">
+      <PreviousButton/>
       <div className="writeTop">매칭 게시판</div>
       <div className="writeMid">
         <div className="userinfo">

@@ -7,6 +7,7 @@ import Checkbox from '../components/Checkbox';
 import InputField from '../components/InputField';
 import { signupUser, sendVerificationMail, verifyMail } from '../api/auth';
 import Mailpopup from '../components/Mailpopup';
+import PreviousButton from '../components/PreviousButton';
 
 const BIRTHDAY_YEAR_LIST = Array.from({ length: 15 }, (_, i) => `${1990 + i}`);
 const BIRTHDAY_MONTH_LIST = Array.from({ length: 12 }, (_, i) => `${i + 1}`);
@@ -141,9 +142,13 @@ function SignupPage() {
 
   return (
     <>
+      <PreviousButton />
       <form className="SignComponent" onSubmit={handleSubmit}>
-        <div className="signupHeader">회원가입</div>
+        
+        <div className="signupHeader">회원가입 </div>
+        
         <div className="signupForm">
+          
           {/* 아이디 */}
           <div className="signupForm-id">
             <div className="signupForm-idform">

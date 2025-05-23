@@ -8,6 +8,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import CarrotIcon from '../assets/images/carroticon.png';
 import ComuIcon from '../assets/images/comuicon.png';
 import Button1 from '../components/Button1';
+import PreviousButton from '../components/PreviousButton';
 
 function NoticeboardPage() {
   const navigate = useNavigate();
@@ -38,6 +39,7 @@ function NoticeboardPage() {
 
   return (
     <div className="BoardComponent">
+      <PreviousButton />
       <div className="writeTop">유저 게시판</div>
 
       <div className="noticeboard-title">

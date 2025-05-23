@@ -4,6 +4,7 @@ import InputWhiteField from '../components/InputWhiteField.js';
 import { useNavigate } from 'react-router-dom';
 import { boards } from '../api/board';
 import React, { useState } from 'react';
+import PreviousButton from '../components/PreviousButton.js';
 
 function MatchwritePage() {
 
@@ -35,17 +36,19 @@ const navigate = useNavigate();
 
     return (
         <div className="WriteComponent">
+          <PreviousButton />
             <div className="writeTop">
                 글쓰기
             </div>
             <div className='writeButton'>
                 <Button
-                    onClick={handleSubmit} // 취소 버튼 클릭 시
+                    
                     backgroundColor="#578E7E" // 초록색
                     textColor="white"
                     width="54px"
                     height='27px'
                     fontSize='16px'
+                    onClick={() => navigate(`/matchboard`)}
                 >
                     취소
                 </Button>

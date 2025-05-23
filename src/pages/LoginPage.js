@@ -7,6 +7,7 @@ import Button from '../components/Button';
 import Checkbox from '../components/Checkbox';
 import InputField from '../components/InputField';
 import { loginUser } from '../api/auth';
+import PreviousButton from '../components/PreviousButton';
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ function LoginPage() {
 
   return (
     <form className="LoginComponent" onSubmit={handleSubmit}>
+      
       <div className="loginTop">
         <span className="loginchar1">재</span>미있고 <span className="loginchar1">활</span>기차게<br />
         <span className="loginTop2">재활의 중심</span>

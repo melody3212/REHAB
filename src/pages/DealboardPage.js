@@ -7,6 +7,7 @@ import InputWhiteField from '../components/InputWhiteField';
 import Button from '../components/Button';
 import mockData from '../api/mock-deal.json'; // JSON 파일 경로
 import { useNavigate } from 'react-router-dom';
+import PreviousButton from '../components/PreviousButton';
 
 function DealboardPage() {
     const [posts, setPosts] = useState([]); // 게시글 상태 정의
@@ -44,6 +45,7 @@ function DealboardPage() {
 
     return (
         <div className="BoardComponent">
+            <PreviousButton />
             <div className="writeTop">
                 중고거래
             </div>

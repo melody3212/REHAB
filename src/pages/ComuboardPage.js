@@ -8,6 +8,7 @@ import Button from '../components/Button';
 import ReactPaginate from 'react-paginate'; // react-paginate 임포트
 import mockData from '../api/mock-comu.json'; // JSON 파일 경로
 import { useNavigate } from 'react-router-dom';
+import PreviousButton from '../components/PreviousButton';
 
 function ComuboardPage() {
     const [posts, setPosts] = useState([]); // 게시글 상태 정의
@@ -51,6 +52,7 @@ function ComuboardPage() {
 
     return (
         <div className="BoardComponent">
+            <PreviousButton />
             <div className="writeTop">
                 커뮤니티
             </div>

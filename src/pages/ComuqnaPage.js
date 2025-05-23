@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import mockData from '../api/mock-comu.json'; // JSON 파일 경로
 import ChatIcon from '../assets/images/chaticon.png';
 import '../assets/css/board.css';
+import PreviousButton from '../components/PreviousButton';
 
 function ComuqnaPage() {
     const { id } = useParams(); // URL에서 ID 가져오기
@@ -20,6 +21,7 @@ function ComuqnaPage() {
 
     return (
         <div className="BoardComponent">
+            <PreviousButton />
             <div className="writeTop">매칭 게시판</div>
             <div className="writeMid">
                 <div className="userinfo">

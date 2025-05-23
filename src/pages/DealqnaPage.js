@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import mockData from '../api/mock-deal.json'; // JSON 파일 경로
 import ChatIcon from '../assets/images/chaticon.png';
 import '../assets/css/board.css';
+import PreviousButton from '../components/PreviousButton';
 
 function DealqnaPage() {
     const { id } = useParams(); // URL에서 ID 가져오기
@@ -20,6 +21,7 @@ function DealqnaPage() {
 
     return (
         <div className="BoardComponent">
+            <PreviousButton />
             <div className="writeTop">중고거래</div>
             <div className="writeMid">
                 <div className="userinfo">

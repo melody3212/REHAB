@@ -5,6 +5,7 @@ import InputWhiteField from '../components/InputWhiteField.js';
 import { useNavigate } from 'react-router-dom';
 import Select from "react-select";
 import { useState } from 'react';
+import PreviousButton from '../components/PreviousButton.js';
 
 function ComuwritePage() {
     const navigate = useNavigate();
@@ -49,6 +50,7 @@ function ComuwritePage() {
 
     return (
         <div className="WriteComponent">
+            <PreviousButton />
             <div className="writeTop">
                 글쓰기
             </div>

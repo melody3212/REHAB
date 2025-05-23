@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import '../assets/css/okPage.css';
 import CheckIcon from '../assets/images/checkicon.svg';
 import Button from '../components/Button';
+import PreviousButton from '../components/PreviousButton';
 
 function MatchwriteokPage() {
   return (
     <div className='SignOkComponent'>
+      
       <div className="SignOkTop">
         <div className="SignIcon">
           <img src={CheckIcon} alt="Check Icon" />

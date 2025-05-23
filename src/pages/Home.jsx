@@ -67,7 +67,7 @@ const Home = ({ schedules, checkedStates, setCheckedStates }) => {
           <Button1 
             text={"간병인 매칭 게시판"}
             type={"community"}
-            onClick={() => nav(`/`)}
+            onClick={() => nav(`/matchboard`)}
           />
         </div>
 
