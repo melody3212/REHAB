@@ -1,0 +1,57 @@
+/* ✅ 모달 전체 배경 (edit에서도 사용됨) */
+.ExerciseTemModal {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 200%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* ✅ 모달 박스 영역 */
+.ExerciseTemModal-content {
+  background: white;
+  padding: 50px 30px;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 400px;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ExerciseTemModal-content >h3{
+  margin: 5px;
+}
+/* ✅ 공통 input, textarea 스타일 */
+.ExerciseTemModal-content input,
+.ExerciseTemModal-content textarea {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+/* ✅ textarea 크기 고정 (전체 넓이 + 충분한 높이) */
+.ExerciseTemModal-content textarea {
+  width: 100%;        /* ✅ 부모 기준 전체 넓이 */
+  min-height: 200px;  /* ✅ 적당한 높이 확보 */
+  resize: vertical;   /* ✅ 사용자 크기 조절 허용 (선택 사항) */
+  line-height: 1.4;
+}
+
+/* ✅ 버튼 영역 오른쪽 정렬 */
+.ExerciseTemModal-button {
+  display: flex;
+  justify-content:space-between;
+  gap: 8px;
+  margin-top: 10px;
+}

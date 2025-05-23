@@ -1,0 +1,87 @@
+[
+    {
+      "id": 1,
+      "title": "감각재활도구 감각통합치료 유아체육교구 판매합니다!",
+      "content": "플랫폼스윙 디스크스윙 미니글라이더볼스터스윙 아이소파 아이짐 체육교구\n\n*등강기 및 로프도 모두 드립니다!\n*플레이매트도 2개 가지고 있습니다!\n\n서울지역 직거래 가능합니다 타 지역 협의 후 택배로 보내드립니다 채팅이나 010 1234 5678 문자 주시면 확인 후 연락드리겠습니다!",
+      "writer": {
+        "name": "홍길동",
+        "profile": {
+          "photo": "/images/user1photo.png"
+        }
+      },
+      "updatedAt": "2025-03-21T12:00:00",
+      "content-photo": "/images/deal1.png",
+      "price": "1,500,000원"
+    },
+    {
+      "id": 2,
+      "title": "전방십자인대 ACL 보조기 좌측 m 판매",
+      "content": "",
+      "writer": {
+        "name": "김철수",
+        "profile": {
+          "photo": "/images/user2photo.png"
+        }
+      },
+      "updatedAt": "2025-03-21T12:00:00",
+      "content-photo": "/images/deal2.png",
+      "price": "50,000원"
+    },
+    {
+      "id": 3,
+      "title": "대용량 손 발 찜질 파라핀 그레이ZP5431",
+      "content": "",
+      "writer": {
+        "name": "이영희",
+        "profile": {
+          "photo": "/images/user3photo.png"
+        }
+      },
+      "updatedAt": "2025-03-21T12:00:00",
+      "content-photo": "/images/deal3.png",
+      "price": "69,000원"
+    },
+    {
+      "id": 4,
+      "title": "파워플러스 손목보호대 M사이즈(새상품) 2개 일괄",
+      "content": "",
+      "writer": {
+        "name": "박민수",
+        "profile": {
+          "photo": "/images/user4photo.svg"
+        }
+      },
+      "updatedAt": "2025-03-21T12:00:00",
+      "content-photo": "/images/deal4.png",
+      "price": "15,000원"
+    },
+    {
+      "id": 5,
+      "title": "재활자전거 RT-50 전동수동 재활치료 자전거 팝니다",
+      "content": "",
+      "writer": {
+        "name": "장서연",
+        "profile": {
+          "photo": "/images/user5photo.png"
+        }
+      },
+      "updatedAt": "2025-03-21T12:00:00",
+      "content-photo": "/images/deal5.png",
+      "price": "500,000원"
+    },
+    {
+      "id": 6,
+      "title": "오른손 마비 재활 장갑 S사이즈(에눌 가능)",
+      "content": "",
+      "writer": {
+        "name": "최지훈",
+        "profile": {
+          "photo": "/images/user6photo.png"
+        }
+      },
+      "updatedAt": "2025-03-21T12:00:00",
+      "content-photo": "/images/deal6.png",
+      "price": "110,000원"
+    }
+  ]
+  

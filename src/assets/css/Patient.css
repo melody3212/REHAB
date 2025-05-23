@@ -1,0 +1,68 @@
+/* ✅ 환자 카드 스타일 */
+.patient-container {
+    background: #ffffff;
+    border-radius: 20px 20px 0px 0px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 15px;
+  }
+  
+  /* 상단: 이름 + 버튼들 */
+  .patient-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #BFBFBF;
+    padding: 0px 10px 0px 13px;
+    border-radius: 16px 16px 0 0;
+
+  }
+
+  .patient-edit {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+  }
+  
+  .patient-name {
+    font-size: 14px;
+    color: black;
+    font-weight: 350;
+    text-align: left;
+  }
+  
+  /* 스케줄 영역 */
+  .patient-content {
+    padding: 20px 20px 10px 20px;
+    text-align: left;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  /* 체크박스 스타일 */
+  .patient-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  
+  .patient-item.checked {
+    color: #aaa;
+    text-decoration: line-through;
+  }
+  
+  .patient-item input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+  }
+  
+  .patient-item span {
+    flex: 1;
+    word-break: break-word;
+  }
+  

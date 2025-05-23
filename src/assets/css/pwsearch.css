@@ -1,0 +1,32 @@
+.pwsearch{
+    margin-top: 129px;
+}
+
+.pwsearch-text{
+    margin-top:27px;
+    color: #000;
+    text-align: center;
+    font-family: "Noto Sans KR";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+}
+
+.pwsearch-input {
+    margin-top: 38px;
+    margin-left: 43px;
+    margin-right: 43px;
+    position: relative; /* position 설정 */
+}
+
+.pwsearch-input input {
+    padding-left: 60px; /* 아이콘 공간 확보 */
+    background: url('../images/mailicon.png') no-repeat 0.5rem center; /* 아이콘 경로 설정 */
+    background-size: 30px 30px; /* 아이콘 크기 조정 */
+}
+
+.pwsearch-input > * {
+    margin-top: 19px;
+}

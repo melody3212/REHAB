@@ -1,0 +1,93 @@
+/* ✅ 전체 카드 */
+.template-item {
+    background: #f0f4f0;
+    border-radius: 12px;
+    margin: 30px 10px;
+    padding: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    font-family: 'Noto Sans KR', sans-serif;
+    overflow: hidden;
+  }
+  
+  /* ✅ 제목 영역 */
+  .title-bar {
+    background-color: #578E7E;
+    color: white;
+    padding: 1px 5px; /* ✅ 세로 여백 줄이기 */
+    min-height: auto; /* 혹시 min-height 설정돼 있으면 제거 */
+    font-weight: bold;
+    font-size: 16px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    white-space: nowrap;       /* ✅ 줄바꿈 방지 */
+   
+  }
+  
+  
+  /* ✅ 운동이름 + 수정 버튼 (가운데 고정) */
+  .title-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  /* ✅ 삭제 버튼 (오른쪽 끝) */
+  .title-right {
+    margin-left: auto;
+    z-index: 2; /* 겹침 방지 */
+  }
+  
+  /* ✅ 세트/횟수 영역 */
+  .set-info {
+    background-color: #86b4a0;
+    padding: 8px 15px ;
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+  }
+  
+  /* ✅ 설명 영역 */
+  .description {
+    background-color: white;
+    padding: 16px;
+    min-height: 80px;
+    font-size: 14px;
+    line-height: 1.6;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  /* ✅ 복습 영역 */
+  .review-section {
+    background-color: #c3e4ca;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  /* ✅ 복습 점 스타일 */
+  .review-section .dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    border: 1.5px solid #aaa;
+  }
+  
+  .review-section .dot.star {
+    background: rgb(255, 221, 29);
+    border: 1.5px solid #aaa;
+  }
+  

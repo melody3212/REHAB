@@ -1,0 +1,104 @@
+[
+    {
+        "id": 1,
+        "title": "간병인 구합니다", 
+        "content": "저희 어머니께서 최근에 입원하셔서 간병인을 구하고 있습니다. 관심 있으신 분들은 채팅 주시면 감사하겠습니다.",
+        "writer": {
+            "name": "매튜",
+            "profile": {
+                "photo": "/images/user1photo.png"
+            }
+        },
+        "updatedAt": "2025-03-21T12:00:00",
+        "comments": [
+            {
+                "commenter": {
+                    "name": "미셸",
+                    "profile": {
+                        "photo": "/images/user2photo.png"
+                    }
+                },
+                "content": "채팅 확인 부탁드립니다.",
+                "createdAt": "2023-03-21T12:06:00"
+            },
+            {
+                "commenter": {
+                    "name": "토마스",
+                    "profile": {
+                        "photo": "/images/user3photo.png"
+                    }
+                },
+                "content": "자세한 사항을 듣고 싶어요.",
+                "createdAt": "2025-03-21T12:10:00"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "도우미 급하게 구합니다 ㅠ", 
+        "content": "최근에 다리를 수술하게 되어 급하게 도와주실 분을 찾고 있습니다. 성별 경력 나이 상관없으니 채팅 주세요!",
+        "writer": {
+            "name": "미셸",
+            "profile": {
+                "photo": "/images/user2photo.png"
+            }
+        },
+        "updatedAt": "2025-03-21T12:00:00",
+        "comments": [
+            {
+                "commenter": {
+                    "name": "민준",
+                    "profile": {
+                        "photo": "/images/user3photo.png"
+                    }
+                },
+                "content": "급하게 도와드릴 수 있습니다! 연락 주세요.",
+                "createdAt": "2025-03-22T08:45:00"
+            },
+            {
+                "commenter": {
+                    "name": "은정",
+                    "profile": {
+                        "photo": "/images/user2photo.png"
+                    }
+                },
+                "content": "어떤 도움이 필요하신지 말씀해 주시면 좋겠습니다.",
+                "createdAt": "2025-03-22T09:50:00"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "title": "간병인을 찾습니다!!", 
+        "content": "저희 아들이 입원하게 되어 오후 시간에 아이를 돌봐주실 수 있는 분을 구하려고 합니다. 평일 1시부터 7시까지만 같이 병원에 계셔주시면 됩니다.",
+        "writer": {
+            "name": "토마스",
+            "profile": {
+                "photo": "/images/user3photo.png"
+            }
+        },
+        "updatedAt": "2025-03-21T12:00:00",
+        "comments": [
+            {
+                "commenter": {
+                    "name": "가은",
+                    "profile": {
+                        "photo": "/images/user2photo.png"
+                    }
+                },
+                "content": "안녕하세요! 제가 도와드릴 수 있습니다.",
+                "createdAt": "2025-03-22T09:20:00"
+            },
+            {
+                "commenter": {
+                    "name": "성민",
+                    "profile": {
+                        "photo": "/images/user3photo.png"
+                    }
+                },
+                "content": "오후 시간에 가능합니다. 더 이야기해요!",
+                "createdAt": "2025-03-22T10:05:00"
+            }
+        ]
+    }
+]

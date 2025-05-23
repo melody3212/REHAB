@@ -1,0 +1,72 @@
+/* ✅ 일반 리스트 전용 스케줄 박스 (기본 모드) */
+.schedule-container {
+  background: #ffffff;
+  border-radius: 20px 20px 0px 0px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 15px;
+}
+
+/* 헤더 영역 */
+.schedule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #BFBFBF;
+  padding: 0px 10px 0px 13px;
+  border-radius: 16px 16px 0 0;
+}
+
+/* 수정 버튼 영역 */
+.schedule-edit {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 스케줄 제목 */
+.schedule-title {
+  font-size: 14px;
+  color: black;
+  font-weight: 350;
+  text-align: left;
+}
+
+/* 스케줄 항목 내용 */
+.schedule-content {
+  padding: 20px 20px 10px 20px;
+  text-align: left;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* 체크리스트 항목 */
+.schedule-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+/* 체크된 항목 효과 */
+.schedule-item.checked {
+  color: #aaa;
+  text-decoration: line-through;
+}
+
+/* 체크박스 사이즈 조정 */
+.schedule-item input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+/* 텍스트는 너비에 따라 줄 바꿈 가능 */
+.schedule-item span {
+  flex: 1;
+  word-break: break-word;
+}
+

@@ -1,0 +1,64 @@
+.comment-container {
+    /* 상위 요소에 갇히도록 절대 위치 지정 */
+    position: absolute;
+    bottom: 64px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 350px;
+    /* 주의: 상위 컨테이너(예: .BoardComponent)에 position: relative 설정 필요 */
+}
+
+.comment-box {
+    /* 기본 스타일 제거 */
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    outline: none;
+    
+    /* 좌우 패딩 확보: 왼쪽 54px, 오른쪽 54px */
+    padding: 0 54px;
+
+    width: 350px;
+    height: 48px;
+    box-sizing: border-box;
+
+    color: #FFF;
+    font-family: "Noto Sans KR";
+    font-size: 16px;
+    line-height: normal;
+    background-color: #7FADA0;
+    border-radius: 10px;
+}
+
+.comment-box:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.comment-box::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+}
+
+.comment-icon-button {
+    /* 버튼 절대 위치로 하단에서 50% 수직 정렬 */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 16px;
+
+    /* 버튼 크기 */
+    width: 30px;
+    height: 30px;
+
+    /* 아이콘 배경 */
+    background-image: url('../images/commenticon.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30px 30px;
+
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+}

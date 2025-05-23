@@ -1,0 +1,34 @@
+.pwreplace-input{
+    margin-left: 43px;
+    margin-right: 43px;
+
+}
+
+.pwreplace-text{
+    color: #1D1D1D;
+    font-family: "Noto Sans KR";
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+margin-top: 21px;
+margin-bottom: 36px;
+}
+
+.pwreplace{
+    margin-top: 113px;
+    margin-bottom: 64px;
+}
+
+.pwreplace-input input>{
+    margin-bottom: 30px;
+}
+
+.pwreplace-toptext{
+    margin-bottom: 11px;
+}
+
+.pwreplaceForm{
+    margin-bottom: 11px;
+}

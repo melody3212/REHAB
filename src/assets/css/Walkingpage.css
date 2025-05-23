@@ -1,0 +1,45 @@
+.walking-page {
+    width: 90%;
+    max-width: 360px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h2 {
+    color: #00796b;
+    margin-bottom: 10px;
+}
+
+.goal-input {
+    width: 100px;
+    padding: 5px;
+    font-size: 16px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+button {
+    width: 100px;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00796b;
+    color: white;
+    cursor: pointer;
+}
+
+.reset-btn {
+    background-color: #d32f2f;
+}

@@ -1,0 +1,147 @@
+.writeMid{
+    margin-top: 39px;
+    display:flex;
+    justify-content: space-between;
+}
+
+.search{
+    color: #A5A6B9;
+    font-family: "Noto Sans KR";
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-left: 8.72%;
+    width:53.85%;
+    justify-content: center; 
+    
+
+}
+
+
+.search-main{
+    display: flex;
+    
+    align-items: center;
+    margin-left: 1.90%;
+    gap: 8.10%;
+    
+}
+
+
+.search-line{
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+    
+}
+
+.matchButton{
+    margin-right:34px;
+
+}
+
+.matchpost-title{
+    color: #000;
+    font-family: "Noto Sans KR";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 10px;
+}
+
+.matchdetail-title{
+    color: #000;
+    font-family: "Noto Sans KR";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 10px; /* 예시: 하단 여백 제거 */
+    margin-left: 7.69%;
+    margin-right:7.69%;
+}
+
+.dealdetail-title{
+    color: #000;
+    font-family: "Noto Sans KR";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 0; /* 예시: 하단 여백 제거 */
+    margin-left: 7.69%;
+    margin-right:7.69%;
+}
+
+.dealdetail-price{
+    color: #000;
+    font-family: "Noto Sans KR";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 0; /* 예시: 하단 여백 제거 */
+    margin-left: 7.69%;
+    margin-right:7.69%;
+}
+
+.matchpost-content{
+    color: #767676;
+    font-family: "Noto Sans KR";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19.7px;
+    height:57px;
+}
+
+
+
+.matchdetail-content{
+    color: #767676;
+    font-family: "Noto Sans KR";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 0;
+    margin-left: 7.69%;
+    margin-right:7.69%;
+}
+
+.dealdetail-content{
+    color: #767676;
+    font-family: "Noto Sans KR";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    margin-left: 7.69%;
+    margin-right:7.69%;
+    
+}
+
+.matchpost{
+    margin-left: 7.69%;
+    margin-right: 7.69%;
+    margin-top:50px;
+      flex: 1 1 auto;      /* 남은 공간을 채움 */
+  overflow-y: auto;     /* 넘칠 때 세로 스크롤 */
+}
+
+.postline {
+    width: 100%;
+    height: 2px; /* 높이는 필요에 따라 조정 가능 */
+    border-top: 1px dotted #000; /* 점선 스타일 */
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.custom-link {
+    text-decoration: none;  /* 밑줄 제거 */
+    color: inherit;         /* 부모 요소 색상 물려받기 */
+    outline: none;          /* 포커스 아웃라인 제거(optional) */
+  }

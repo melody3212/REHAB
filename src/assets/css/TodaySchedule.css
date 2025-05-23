@@ -1,0 +1,51 @@
+/* ✅ 오늘의 스케줄 카드 박스 */
+.schedule_today-box {
+  width: 265px;
+  height: 110px; /* 일정한 높이 */
+  overflow: hidden;
+  background-color: #d8ede4;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  margin: 5px 5px 5px 20px;
+}
+
+/* 호버 시 살짝 확대 */
+.schedule_today-box:hover {
+  transform: scale(1.02);
+}
+
+/* 카드 헤더 (날짜 등) */
+.schedule_header {
+  background-color: #578E7E;
+  color: white;
+  padding: 8px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+/* 체크리스트 영역 */
+.schedule_content {
+  padding: 10px 5px;
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+  height: 50px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* 스크롤바 커스터마이징 */
+.schedule_content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.schedule_content::-webkit-scrollbar-thumb {
+  background-color: #c9c6c6;
+  border-radius: 1px;
+}
+
+
+

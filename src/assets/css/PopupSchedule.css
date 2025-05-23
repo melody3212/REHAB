@@ -1,0 +1,79 @@
+/* ======================== */
+/* 📌 팝업 모드 전용/ 전체 오버레이 */
+/* ======================== */
+.today-modal-overlay {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 10vh;
+    z-index: 1000;
+  }
+  
+  /* ======================== */
+  /* 📌 팝업 박스 */
+  /* ======================== */
+  /*닫기버튼*/
+  .modal-top {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 16px 8px 0; /* 오른쪽과 아래 여백 */
+  }
+
+
+  .modal-content.no-padding {
+    background: #ececec;
+    border-radius: 20px;
+    width: 420px;
+    max-width: 90%;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+  
+  /* 팝업 모드일 때 배경 제거 */
+  .popup-mode.schedule-container {
+    background: transparent;
+    box-shadow: none;
+  }
+  
+  /* 팝업용 헤더 */
+  .popup-mode .schedule-header {
+    display: flex;
+    justify-content: center;
+    background-color: #578E7E;
+    padding: 0;
+    border-radius: 16px 16px 0 0;
+  }
+  
+  /* 팝업용 제목 */
+  .popup-mode .schedule-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+  }
+  
+  /* 팝업용 체크리스트 박스 */
+  .popup-mode .schedule-content {
+    height: 200px;
+    background-color: white;
+    border-radius: 0px 0px 20px 20px;
+    overflow-y: auto;
+    padding: 20px;
+  }
+  
+  /* 팝업 항목 스타일 */
+  .popup-mode .schedule-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 0;
+    line-height: 1.6;
+  }
+  

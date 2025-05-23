@@ -1,0 +1,175 @@
+/* <버튼 종류>
+1. 뒤로가기 버튼
+2. 게시판 들어가기 버튼
+3. 생성하기 버튼 (+)
+4. 삭제하기 버튼 (x)
+5. 내정보 수정 버튼
+*/
+
+.Button:hover {
+  /* 호버 시 살짝 확대 */
+  transform: scale(1.02); 
+}
+/* 🔙 뒤로가기 버튼 */
+.Button_back {
+    background-color: #F5F5F5;
+    font-size: 20px;
+    color: rgb(61, 61, 61);
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* 🧵 커뮤니티 버튼 */
+  .Button_community {
+    width: 290px;
+    height: 45px;
+    border-radius: 10px;
+    background-color: #CBE1D8;
+    color: #024A34;
+    font-size: 15px;
+    text-align: left;
+    padding: 10px;
+    margin: 7px 10px 7px 7px;
+    font-weight: bold;
+    box-shadow: none;
+    border-color: #CBE1D8;
+    cursor: pointer;
+  }
+  
+  /* ➕ 생성하기 버튼 */
+  .Button_make {
+    width: 60px;
+    height: 70px;
+    justify-content: center;
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 10px;
+  }
+  
+  .Button_make img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  /* ❌ 삭제하기 버튼 */
+  .Button_delete {
+    width: 26px;
+    height: 26px;
+    background-color: #F66868;
+    border-radius: 5px;
+    color: white;
+    margin: 10px;
+  }
+  
+  .Button_delete span {
+    position: relative;
+    top: -1.5px;
+  }
+  
+  /* ✏️ 수정 버튼 */
+  .Button_edit {
+    width: 10px;
+    background: #d1131300;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* 🔍 검색 버튼 */
+  .Button_search {
+    width: 10px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 10px;
+  }
+  
+  .button-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* 👤 내 정보 수정 / 로그아웃 버튼 */
+  .Button_profile {
+    width: 80px;
+    height: 30px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    font-size: 11px;
+    border-radius: 5px;
+    border: 1px solid rgb(92, 92, 92);
+    align-items: center;
+  }
+  
+/* 📅 스케쥴/운동기록/인지행동 버튼 */
+.Button_basic {
+    width: 105px;
+    height: 100px;
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 20px;
+    background-color: #578E7E;
+    color: white;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;         /* 아이콘 + 텍스트 세로 정렬 */
+    justify-content: center;        /* 수직 중앙 정렬 */
+    align-items: center;            /* 가로 중앙 정렬 */
+    gap: 6px;                       /* 아이콘과 텍스트 간격 */
+}
+
+/* ✅ 버튼 안 아이콘 이미지 */
+.button-icon {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+}
+
+
+
+  /* 추가, 닫기 버튼 */
+  .Button_add {
+    background-color: #79B199;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100px;
+  }
+  
+  .Button_esc {
+    background-color: #F66868;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100px;
+  }
+  
+  /* 운동추가하기 버튼*/
+  .Button_exercise-make{
+    width: 90%;
+    height: 91px;
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 20px;
+    background-color: #78a793;
+    color: white;
+    cursor: pointer;
+  }

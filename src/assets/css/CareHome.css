@@ -1,0 +1,60 @@
+
+
+.logout{
+    display: flex;
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    padding: 10px;
+}
+
+
+.h2, h3 {
+    color: #00796b;
+}
+
+
+
+.info{
+    display: flex;
+}
+
+/*오늘의 스케쥴, 오늘의 걸음수*/
+.top{
+    display: flex;
+    width: 100%; /* 전체 화면에 맞게 설정 */
+    justify-content: space-between; /* 좌우 정렬 */
+    align-items: stretch; /* 높이 동일하게 맞춤 */
+    gap: 10px; /* 간격 */
+}
+
+.steps, .schedule{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 내용 가운데 정렬 */
+}
+
+.steps {
+    flex: 0.4; /* 적당한 비율로 조정 */
+    display: flex;
+    justify-content: center; /* 중앙 정렬 */
+}
+
+
+.com_img{
+    width:50px;
+    height: 50px;
+    margin: 5px;
+}
+
+.info{
+    display: flex;
+}
+
+
+
+  
+
+
+.calendar{
+    justify-content:center ;
+}

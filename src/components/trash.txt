@@ -1,0 +1,90 @@
+const Walking = ({ goal, steps }) => {
+    const progress = Math.min((steps / goal) * 100, 100);
+    const navigate = useNavigate();
+    const handleClick = () => navigate("/walkingpage");
+
+    const size = 75; // 원 크기 (네모에 맞게 조절)
+    const radius = size / 2 - 10; // 반지름 (여백 포함)
+    const strokeWidth = 8; // 선 두께
+    const circumference = 2 * Math.PI * radius;
+    const progressOffset = circumference - (progress / 100) * circumference;
+
+    return (
+        <div className="walking-container" onClick={handleClick}>
+            <p className="steps-info">오늘의 걸음수 {steps}</p>
+            {/* SVG 원형 프로그래스바 직접 삽입 */}
+            <div className="circular-progress" style={{ width: size, height: size }}>
+                <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+                    {/* 배경 원 */}
+                    <circle
+                        cx={size / 2}
+                        cy={size / 2}
+                        r={radius}
+                        fill="none"
+                        stroke="#ddd"
+                        strokeWidth={strokeWidth}
+                    />
+                    {/* 진행 원 */}
+                    <circle
+                        cx={size / 2}
+                        cy={size / 2}
+                        r={radius}
+                        fill="none"
+                        stroke="#00796b"
+                        strokeWidth={strokeWidth}
+                        strokeDasharray={circumference}
+                        strokeDashoffset={progressOffset}
+                        strokeLinecap="round"
+                        transform={`rotate(-90 ${size / 2} ${size / 2})`}
+                    />
+                    {/* 퍼센트 텍스트 */}
+                    <text x="50%" y="50%" textAnchor="middle" dy=".3em" fontSize="11px" fill="#333">
+                        {progress}%
+                    </text>
+                </svg>
+            </div>
+        </div>
+    );
+};
+
+
+import React from "react";
+import { useNavigate } from 'react-router-dom';
+import '../assets/css/ExercisePage.css';
+import Button from "../components/Button";
+import Header from "../components/Header";
+import ExerciseCalendar from "../components/ExerciseCalendar"; 
+
+const ExercisePage = ({ exercises, setExercises }) => {
+  const nav = useNavigate();
+
+  return (
+    <div className="ExercisePage"> {/* ✅ 스타일링용 class 추가 */}
+      <Header 
+        title={"재활운동기록"}
+        leftChild={
+          <Button
+            type={"back"}
+            text={"<"}
+            onClick={() => nav(`/`)}
+          />
+        }  
+      />
+
+      {/* ✅ 운동 템플릿 관리 페이지로 이동 */}
+      <div>
+        {/* ✅ 캘린더 삽입 */}
+        <ExerciseCalendar />
+        <Button
+          type={"exercise-make"}
+          text="운동 추가하기"
+          onClick={() => nav(`./exercisetem`)}
+        />
+      </div>
+
+      
+    </div>
+  );
+};
+
+export default ExercisePage;

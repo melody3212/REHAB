@@ -1,0 +1,5 @@
+.today-date{
+
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    padding: 10px;
+}

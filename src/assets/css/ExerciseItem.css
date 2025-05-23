@@ -1,0 +1,27 @@
+.review-dots {
+    display: flex;              /* 가로로 정렬 */
+    flex-direction: row;        /* 혹시 모르니 명시적으로 row로 지정 */
+    gap: 6px;                   /* 도트 사이 간격 (선택사항) */
+    margin-top: 6px;
+  }
+  
+  .dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #dcdcdc;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .dot.checked {
+    background-color: #578E7E; /* ✅ 클릭 시 색상 변경 */
+  }
+
+  
+  .dot.checked {
+    background-color: #ffee00; /* 클릭되면 초록색으로 */
+    cursor: pointer;
+    display: flex;
+  }
+  

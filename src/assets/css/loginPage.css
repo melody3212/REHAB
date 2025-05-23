@@ -1,0 +1,111 @@
+.LoginComponent{
+
+    margin-left: 43px; /* 컴포넌트 왼쪽 여백 */
+    margin-right: 43px; /* 컴포넌트 오른쪽 여백 */
+
+}
+
+.loginTop{
+
+    padding-top:113px;
+    color: #000;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    text-align: center;
+
+
+}
+
+.loginTop2{
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    
+}
+.loginchar1{
+    color: #578E7E;
+    text-align: center;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 30px; /* 100% */
+}
+
+.loginMid{
+    margin-top: 31px;
+    text-align: center;
+    justify-content: center;
+}
+
+.loginIcon {
+    width: 46.97px;
+    height: 46.814px;
+    flex-shrink: 0;
+    aspect-ratio: 46.97/46.81;
+    
+}
+
+.loginMid-text{
+    margin-top:10px;
+    
+    height: 48px;
+    flex-shrink: 0;
+    -webkit-text-stroke-width: 0.7px;
+    -webkit-text-stroke-color: #000;
+    font-family: "Leelawadee UI";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    background: linear-gradient(180deg, #1C6550 0%, #78BDA9 55.6%, #ECF9F5 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+
+.loginCkbox{
+    display:flex;
+    margin-top: 56px;
+    width:43.75%;
+    justify-content: space-between;
+    border-radius: 0;
+    font-size:14px;
+}
+
+.loginInput{
+    margin-top: 30px;
+    
+}
+
+.loginButton > * {
+    margin-bottom: 17px; /* 위쪽에 17px 간격 */
+}
+
+.loginButton{
+    margin-top: 19px;
+}
+
+.loginLine {
+    width: 100%; /* 직선의 길이 */
+    height: 1px;  /* 직선의 두께 */
+    background-color: #A5A6B9; /* 직선의 색상 */
+    margin: 17px 0; /* 위아래 여백 추가 (선택 사항) */
+}
+
+.loginEnd{
+    color: #000;
+font-family: "Noto Sans KR";
+font-size: 11px;
+font-style: normal;
+font-weight: 100;
+line-height: normal;
+text-decoration: none;
+}

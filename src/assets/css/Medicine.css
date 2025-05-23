@@ -1,0 +1,52 @@
+.medicine-container {
+    background: #ffffff; 
+    border-radius: 20px 20px 0px 0px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 15px;
+}
+
+/* ✅ 제목 + 버튼을 한 줄에 정렬 */
+.medicine-header {
+    display: flex;
+    justify-content: center; /* 중앙 정렬 */
+    align-items: center; /* 높이 균등 정렬 */
+    background: #79B199;
+    border-radius: 16px 16px 0 0; /* 상단만 둥글게 */
+    font-size: 14px;
+    gap: 0px;
+    
+}
+
+.medicine-title {
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    padding: 12px;
+    font-weight: 350;
+    white-space: nowrap; /* 줄바꿈 방지 */
+    margin: 2px; /* ✅ 기본 마진 제거 */
+}
+
+/* ✅ 버튼 크기 & 위치 조절 */
+.medicine-header button {
+    font-size: 14px;
+    height: auto; /* ✅ 높이를 자동으로 맞춤 */
+    padding: 0px;
+    cursor: pointer;
+}
+
+.medicine-content {
+    padding: 0px 20px 10px 20px;
+    text-align: left;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+
+}
+
+.placeholder-text {
+    color: #999;
+    font-style: italic;
+    font-size: 14px;
+    text-align: center;
+}

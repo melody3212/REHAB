@@ -1,0 +1,15 @@
+.checkbox-container {
+    display: flex; /* 플렉스 박스 사용 */
+    align-items: center; /* 수직 중앙 정렬 */
+
+    
+}
+
+.checkbox {
+    cursor: pointer; /* 포인터 커서 변경 */
+    width: 16px;
+    height: 16px;
+    border: 0px solid #000;
+    border-radius: 0;
+    
+}

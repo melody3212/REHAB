@@ -1,0 +1,108 @@
+/* ✅ 날짜 선택 버튼 (날짜 텍스트) */
+.record-date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;  /* ✅ 줄바꿈 방지 */
+    background-color: white;
+    color: #578E7E;
+    border: none;
+    border-radius: 20px;
+    min-width: 120px;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 7px 15px;
+    margin: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* ✅ 날짜 이동 버튼 (◀ / ▶) 원형 스타일 */
+.date-nav-btn {
+    width: 32px;                   /* 정사각형 */
+    height: 32px;
+    border-radius: 40%;            /* 동그랗게 */
+    background-color: white;       /* 배경색 (버튼처럼) */
+    border: none;
+    display: flex;
+    justify-content: center;       /* 아이콘 가운데 */
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: #2f6846;                /* 짙은 초록색 */
+    cursor: pointer;
+    padding: 0;                    /* ✅ 패딩 제거 */
+    margin: 0;                     /* 필요시 조정 가능 */
+}
+
+/* ✅ hover 효과 (선택) */
+.date-nav-btn:hover {
+    background-color: #e6f0ea;
+    color: #1e4a32;
+}
+
+.record-date:hover{
+    background-color: #e6f0ea;
+    color: #1e4a32;
+}
+
+/* ✅ 날짜 선택 영역 전체 */
+.record-date-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;               /* ✅ 기존 12px → 8px로 줄임 */
+    margin-top: 4px;        /* ✅ 위쪽 간격 좁히기 */
+    margin-bottom: 16px;
+}
+
+/* ✅ 인라인 달력 영역 */
+.calendar-inline {
+    display: flex;
+    justify-content: center;
+    margin: 8px 0 16px;
+}
+
+/* ✅ 몇 회차 표시 영역 */
+.exercise-round {
+    max-width: 70px;                   /* 전체 너비 차지 */
+    display: flex;                /* ✅ 텍스트 정렬용 flex */
+    justify-content: center;     /* ✅ 가로 가운데 정렬 */
+    align-items: center;         /* ✅ 세로 정렬도 안전하게 */
+    font-size: 16px;
+    font-weight: 500;
+    color: #578E7E;
+    background-color: white;
+    border-radius: 20px;
+    padding: 7px 15px;
+    margin: 40px auto 15px auto;  /* ✅ 중앙 정렬 + 아래 여백 */
+}
+
+
+/* ✅ 운동 추가 버튼 우측 정렬 */
+.record-actions {
+    justify-content: center;
+    margin: 0 20px 12px;
+}
+
+/* ✅ 운동 리스트 패딩 */
+.record-list {
+    padding: 0 20px;
+}
+
+/* ✅ 운동이 없을 때 안내 메시지 */
+.empty-msg {
+    color: #888;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 70px;
+}
+
+/* ✅ 모달 플레이스홀더 (나중에 제거 가능) */
+.modal-placeholder {
+    padding: 40px 20px;
+    background: #f0f0f0;
+    text-align: center;
+    margin: 30px 20px;
+    border-radius: 10px;
+}

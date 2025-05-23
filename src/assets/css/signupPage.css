@@ -1,0 +1,210 @@
+.signupHeader {
+    font-size: 24px; /* 헤더 폰트 크기 */
+    font-weight: 400; /* 헤더 폰트 두께 */
+    margin-bottom: 32px; /* 헤더 아래 여백 */
+    padding-top: 92px; /* 헤더 위 여백 */
+    text-align: center; /* 헤더 텍스트 중앙 정렬 */
+}
+
+.SignComponent {
+    margin-left: 43px; /* 컴포넌트 왼쪽 여백 */
+    margin-right: 43px; /* 컴포넌트 오른쪽 여백 */
+    position: relative;
+}
+
+.signupForm-text {
+    display: inline-block;
+    color: #1D1D1D;
+    font-family: "Noto Sans KR";
+    font-size: 14px;
+    font-style: normal;
+    margin-bottom: 7px;
+    
+    
+    
+    
+
+}
+
+.SignupinputField {
+    margin-top: 0px; /* 입력 필드 위 여백 */
+    width: 100%; /* 입력 필드 너비 */
+    height: 40px; /* 입력 필드 높이 */
+    box-sizing: border-box; /* 박스 사이즈 계산 방법 설정 */
+    margin-bottom: 10px;
+}
+
+.SignupinputField-pw {
+    margin-top: 0px; /* 입력 필드 위 여백 */
+    width: 100%; /* 입력 필드 너비 */
+    height: 40px; /* 입력 필드 높이 */
+    box-sizing: border-box; /* 박스 사이즈 계산 방법 설정 */
+    
+}
+
+.SignupinputField-email {
+    width: 100%; /* 이메일 입력 필드 너비 */
+    height: 40px; /* 이메일 입력 필드 높이 */
+    box-sizing: border-box; /* 박스 사이즈 계산 방법 설정 */
+    margin-bottom: 10px;
+}
+
+.signupForm-email-detail {
+    display: flex; /* 플렉스 박스 사용 */
+    justify-content: space-between; /* 요소를 양쪽 끝으로 배치 */
+    align-items: center; /* 요소를 수직 중앙에 배치 */
+    gap: 4.93%; /* 요소 간격 설정 */
+}
+
+.signupForm-birth-detail {
+    display: flex; /* 플렉스 박스 사용 */
+    justify-content: space-between; /* 요소를 양쪽 끝으로 배치 */
+    gap: 8%; /* 요소 간격 설정 */
+    margin-bottom: 10px;
+}
+
+.select-wrapper {
+    position: relative; /* 상대 위치 설정 */
+    display: inline-block; /* 인라인 블록으로 설정 */
+    width: 100%; /* 너비 100% */
+}
+
+.birthdayBox {
+    
+    width: 100%; /* 선택 박스 너비 */
+    height: 40px; /* 선택 박스 높이 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    border: 0px solid #fff; /* 테두리 색상 */
+    background-color: #f7f7fb; /* 배경 색상 */
+    padding: 7px 13px; /* 안쪽 여백 */
+    box-sizing: border-box; /* 박스 사이즈 계산 방법 설정 */
+    appearance: none; /* 기본 선택 화살표 숨기기 */
+    color: #A5A6B9; /* 텍스트 색상 */
+    font-family: 'Noto Sans KR', sans-serif; /* 폰트 패밀리 */
+    font-size: 13px; /* 폰트 크기 */
+    font-style: normal; /* 폰트 스타일 */
+    font-weight: 400; /* 폰트 두께 */
+    line-height: normal; /* 줄 높이 */
+    padding-right: 30px; /* 오른쪽 여백 추가 (V 문자 공간) */
+}
+
+.select-arrow {
+    position: absolute; /* 절대 위치 설정 */
+    right: 10px; /* 오른쪽 여백 */
+    top: 50%; /* 수직 중앙 정렬 */
+    transform: translateY(-50%); /* 중앙 정렬 조정 */
+    color: #A5A6B9; /* 화살표 색상 */
+    font-family: 'Poppins', sans-serif; /* 폰트 패밀리 */
+    font-size: 13px; /* 폰트 크기 */
+    font-weight: 400; /* 폰트 두께 */
+    pointer-events: none; /* 클릭 이벤트 무시 */
+}
+
+.custom-select .selected {
+    padding: 10px; /* 선택된 항목의 패딩 */
+    border: 0px solid #ccc; /* 테두리 색상 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    background-color: #f7f7fb; /* 배경 색상 */
+    display: flex; /* 플렉스 박스 사용 */
+    justify-content: space-between; /* 요소를 양쪽 끝으로 배치 */
+    align-items: center; /* 요소를 수직 중앙에 배치 */
+    color: #A5A6B9; /* 텍스트 색상 */
+    font-family: 'Poppins', sans-serif; /* 폰트 패밀리 */
+    font-size: 13px; /* 폰트 크기 */
+    font-style: normal; /* 폰트 스타일 */
+    font-weight: 400; /* 폰트 두께 */
+    line-height: normal; /* 줄 높이 */
+}
+
+.option {
+    padding: 10px; /* 옵션 항목의 패딩 */
+    cursor: pointer; /* 커서 포인터로 변경 */
+    color: #A5A6B9; /* 텍스트 색상 */
+    font-family: 'Poppins', sans-serif; /* 폰트 패밀리 */
+    font-size: 13px; /* 폰트 크기 */
+    font-style: normal; /* 폰트 스타일 */
+    font-weight: 400; /* 폰트 두께 */
+    line-height: normal; /* 줄 높이 */
+}
+
+.option:hover {
+    background-color: #f0f0f0; /* 배경 색상 변경 */
+}
+
+.signupCheckbox{
+    display:flex;
+    margin-top: 22px;
+    width:43.75%;
+    justify-content: space-between;
+    border-radius: 0;
+    font-size:14px;
+}
+
+.signupButton{
+    margin-top:22px;
+    display:flex;
+    width:100%;
+    justify-content: space-between;
+    height: 36px;
+    align-items: center;
+    box-sizing: border-box;
+
+}
+
+.email-check{
+    margin-top: 5px;
+}
+
+.email-check-text{
+    color: #0091E5;
+font-family: "Noto Sans KR";
+font-size: 10px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+
+margin-top: 12px;
+text-align: right;
+}
+
+.signupForm-text2{
+    color: #F00;
+    text-align: center;
+    font-family: "Noto Sans KR";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-left: 12px;
+    display: inline-block;
+    position: relative;
+    top: -1px;
+    
+}
+
+.signupForm-text3{
+    color: #F00;
+    text-align: center;
+    font-family: "Noto Sans KR";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    text-align: end;
+    display: inline-block;
+    position: relative;
+    margin-top: 10px;
+    
+}
+.button, input {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    line-height: normal;
+  }
+
+
+
+.signupForm-email{
+    gap:7px;
+}
