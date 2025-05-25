@@ -1,23 +1,32 @@
 // === src/pages/MatchqnaPage.jsx ===
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import ChatIcon from '../assets/images/chaticon.png';
+import DeleteIcon from '../assets/images/deleteicon.png';
 import DefaultProfile from '../assets/images/default-profile.png';
 import '../assets/css/board.css';
 import '../assets/css/comment.css';
+import '../assets/css/popup.css';
 import Comment from '../components/Comment';
-import { comments as postComment } from '../api/board';
+import {
+  comments as postComment,
+  deleteComment,
+  deleteBoard,
+} from '../api/board';
 import PreviousButton from '../components/PreviousButton';
+import Deletepopup from '../components/Deletepopup';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || '';
 
 function MatchqnaPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [post, setPost] = useState(null);
   const [commentsList, setCommentsList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [commentContent, setCommentContent] = useState('');
+  const [showDeletePopup, setShowDeletePopup] = useState(false);
 
   // 게시글 및 댓글 불러오기
   useEffect(() => {
@@ -27,14 +36,12 @@ function MatchqnaPage() {
         const authHeader = localStorage.getItem('authToken') || '';
         const [, jwt] = authHeader.split(' ');
 
-        // 게시글 데이터
         const postRes = await axios.get(
           `${API_BASE_URL}/api/boards/${id}`,
           { headers: { Authorization: `Bearer ${jwt}` } }
         );
         setPost(postRes.data.data);
 
-        // 댓글 리스트
         const commentRes = await axios.get(
           `${API_BASE_URL}/api/boards/${id}/comments`,
           { headers: { Authorization: `Bearer ${jwt}` } }
@@ -53,7 +60,6 @@ function MatchqnaPage() {
     setCommentContent(e.target.value);
   };
 
-  // 댓글 제출 및 목록 재조회
   const handleCommentSubmit = async () => {
     if (!commentContent.trim()) return;
     try {
@@ -76,7 +82,7 @@ function MatchqnaPage() {
 
   return (
     <div className="BoardComponent">
-      <PreviousButton/>
+      <PreviousButton />
       <div className="writeTop">매칭 게시판</div>
       <div className="writeMid">
         <div className="userinfo">
@@ -87,11 +93,21 @@ function MatchqnaPage() {
             onError={(e) => { e.currentTarget.src = DefaultProfile; }}
           />
           <span className="writertext">
-            {post.username}<br />
+            {post.username}
+            <br />
             {new Date(post.updatedAt).toLocaleString()}
           </span>
         </div>
-        <img src={ChatIcon} alt="Chat Icon" className="chatIcon" />
+        <div className="flexbox">
+          <img src={ChatIcon} alt="Chat Icon" className="chatIcon" />
+          <img
+            src={DeleteIcon}
+            alt="Delete Icon"
+            className="chatIcon"
+            style={{ cursor: 'pointer' }}
+            onClick={() => setShowDeletePopup(true)}
+          />
+        </div>
       </div>
 
       <div className="writecontent">
@@ -99,7 +115,6 @@ function MatchqnaPage() {
         <p className="matchdetail-content">{post.content}</p>
         <div className="matchline" />
 
-        {/* 댓글 목록 */}
         <div className="comments-section">
           {commentsList.length > 0 ? (
             commentsList.map((comment) => (
@@ -120,28 +135,56 @@ function MatchqnaPage() {
               </div>
             ))
           ) : (
-            <p>댓글이 없습니다.</p>
+            <p></p>
           )}
         </div>
       </div>
 
-      {/* 댓글 입력 영역: writecontent 외부에 배치 */}
+      <Comment
+        id="comment"
+        name="comment"
+        value={commentContent}
+        onChange={handleCommentChange}
+        onSubmit={handleCommentSubmit}
+        placeholder="댓글을 입력하세요."
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            handleCommentSubmit();
+          }
+        }}
+      />
 
-        <Comment
-          id="comment"
-          name="comment"
-          value={commentContent}
-          onChange={handleCommentChange}
-          onSubmit={handleCommentSubmit}
-          placeholder="댓글을 입력하세요."
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              e.preventDefault();
-              handleCommentSubmit();
-            }
-          }}
-        />
-
+      {showDeletePopup && (
+        <>
+          <div
+            className="popup-overlay"
+            onClick={() => setShowDeletePopup(false)}
+          />
+          <Deletepopup
+            onCancel={() => setShowDeletePopup(false)}
+            onConfirm={async () => {
+              try {
+                const boardId = Number(id);
+                // 1) 댓글 전부 삭제
+                for (const c of commentsList) {
+                  await deleteComment(boardId, c.id);
+                }
+                // 2) 게시글 삭제
+                await deleteBoard(boardId);
+                // 3) 목록으로 이동
+                navigate('/matchboard');
+              } catch (err) {
+                console.error(
+                  'Error deleting comments or post:',
+                  err.response?.data || err
+                );
+                alert('삭제 중 오류가 발생했습니다.');
+              }
+            }}
+          />
+        </>
+      )}
     </div>
   );
 }

@@ -260,3 +260,10 @@ margin-top:10px;
     -webkit-line-clamp: 3;        /* 최대 3줄까지만 표시 */
     overflow: hidden;             /* 3줄 이후 텍스트 숨기기 */
   }
+
+.flexbox {
+  display: flex;
+  margin-right: 25px;
+  align-items: center; /* 수직 중앙 정렬 */
+  gap: 8px;            /* 아이템 간격 5px */
+}

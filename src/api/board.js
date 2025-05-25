@@ -9,13 +9,10 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || '';
  * @returns {Promise<object>}
  */
 export async function boards({ title, content, boardType, imgUrl }) {
-  // authToken 형식: "ACCESS_TOKEN <jwt>"으로 저장되어 있음
   const authHeader = localStorage.getItem('authToken');
   if (!authHeader) {
     throw new Error('No auth token found');
   }
-
-  // 실제 서버에서는 "Bearer <jwt>" 형태를 기대할 가능성이 높으므로 토큰 부분만 사용
   const [, jwt] = authHeader.split(' ');
   if (!jwt) {
     throw new Error('Invalid auth token format');
@@ -31,8 +28,6 @@ export async function boards({ title, content, boardType, imgUrl }) {
       }
     }
   );
-
-  console.log('Sent Authorization:', `Bearer ${jwt}`);
   return response.data;
 }
 
@@ -42,13 +37,10 @@ export async function boards({ title, content, boardType, imgUrl }) {
  * @returns {Promise<object>}
  */
 export async function comments({ boardId, content }) {
-  // authToken 형식: "ACCESS_TOKEN <jwt>"으로 저장되어 있음
   const authHeader = localStorage.getItem('authToken');
   if (!authHeader) {
     throw new Error('No auth token found');
   }
-
-  // 실제 서버에서는 "Bearer <jwt>" 형태를 기대할 가능성이 높으므로 토큰 부분만 사용
   const [, jwt] = authHeader.split(' ');
   if (!jwt) {
     throw new Error('Invalid auth token format');
@@ -64,7 +56,47 @@ export async function comments({ boardId, content }) {
       }
     }
   );
+  return response.data;
+}
 
-  console.log('Sent Authorization:', `Bearer ${jwt}`);
+/**
+ * 게시글 삭제 API 호출
+ * @param {number} boardId
+ * @returns {Promise<object>}
+ */
+export async function deleteBoard(boardId) {
+  const authHeader = localStorage.getItem('authToken');
+  if (!authHeader) {
+    throw new Error('No auth token found');
+  }
+  const [, jwt] = authHeader.split(' ');
+  if (!jwt) {
+    throw new Error('Invalid auth token format');
+  }
+
+  const response = await axios.delete(
+    `${API_BASE_URL}/api/boards/${boardId}`,
+    {
+      headers: {
+        'Authorization': `Bearer ${jwt}`
+      }
+    }
+  );
+  return response.data;
+}
+
+/**
+ * 댓글 삭제 API 호출
+ * @param {number} boardId
+ * @param {number} commentId
+ */
+export async function deleteComment(boardId, commentId) {
+  const authHeader = localStorage.getItem('authToken');
+  if (!authHeader) throw new Error('No auth token found');
+  const [, jwt] = authHeader.split(' ');
+  const response = await axios.delete(
+    `${API_BASE_URL}/api/boards/${boardId}/comments/${commentId}`,
+    { headers: { Authorization: `Bearer ${jwt}` } }
+  );
   return response.data;
 }

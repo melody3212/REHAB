@@ -9,7 +9,7 @@ import Mailpopup from '../components/Mailpopup';
 import { sendNewPasswordMail, verifyMail } from '../api/auth';
 
 
-export default function PwsearchPage() {
+export default function IdsearchPage() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [verificationKey, setVerificationKey] = useState('');

@@ -106,7 +106,7 @@ function LoginPage() {
 
         <div className="loginEnd">
           <span
-            onClick={() => navigate('/find-id')}
+            onClick={() => navigate('/idsearch')}
             style={{ cursor: 'pointer' }}
           >
             아이디 찾기

@@ -26,6 +26,7 @@ import ComuqnaPage from '../pages/ComuqnaPage';
 import DealboardPage from '../pages/DealboardPage';
 import DealqnaPage from '../pages/DealqnaPage';
 import ComuwritePage from '../pages/ComuwritePage';
+import IdsearchPage from '../pages/IdsearchPage';
 import PwsearchPage from '../pages/PwsearchPage';
 import PwreplacePage from '../pages/PwreplacePage';
 import PwreplacepokPage from '../pages/PwreplaceokPage';
@@ -133,6 +134,7 @@ export default function AppRouter({
           <Route path="/dealboard" element={<DealboardPage />} />
           <Route path="/dealboard/:id" element={<DealqnaPage />} />
           <Route path="/comuwrite" element={<ComuwritePage />} />
+          <Route path="/idsearch" element={<IdsearchPage />} />
           <Route path="/pwsearch" element={<PwsearchPage />} />
           <Route path="/pwreplace" element={<PwreplacePage />} />
           <Route path="/pwreplaceok" element={<PwreplacepokPage />} />

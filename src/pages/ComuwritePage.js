@@ -4,17 +4,21 @@ import PictureIcon from '../assets/images/pictureicon.png';
 import InputWhiteField from '../components/InputWhiteField.js';
 import { useNavigate } from 'react-router-dom';
 import Select from "react-select";
-import { useState } from 'react';
-import PreviousButton from '../components/PreviousButton.js';
+import { useState, useRef } from 'react';
+import MatchbackButton from '../components/MatchbackButton.js';
 
 function ComuwritePage() {
     const navigate = useNavigate();
-    const defaultOption = { value: 'community', label: '커뮤니티 게시판' };
+    const defaultOption = { value: 'FREE', label: '커뮤니티 게시판' };
     const [selectedOption, setSelectedOption] = useState(defaultOption);
 
+    // 이미지 파일 상태 및 파일명 표시
+    const [selectedImage, setSelectedImage] = useState(null);
+    const fileInputRef = useRef();
+
     const handleSubmit = () => {
-        // 제출 로직 작성
-        console.log('폼 제출');
+        // 제출 로직 작성: selectedImage와 함께 서버로 전송
+        console.log('폼 제출, 선택된 이미지:', selectedImage);
     };
 
     const handleMatchOk = () => {
@@ -23,8 +27,8 @@ function ComuwritePage() {
     };
 
     const options = [
-        { value: 'community', label: '커뮤니티 게시판' },
-        { value: 'secondhand', label: '중고거래 게시판' }
+        { value: 'FREE', label: '커뮤니티 게시판' },
+        { value: 'MARKET', label: '중고거래 게시판' }
     ];
 
     const customStyles = {
@@ -48,46 +52,53 @@ function ComuwritePage() {
         }),
     };
 
+    // 사진 아이콘 클릭 시 파일 선택 창 열기
+    const onPictureClick = () => {
+        fileInputRef.current?.click();
+    };
+
+    // 파일 선택 시 state에 저장
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setSelectedImage(file);
+        }
+    };
+
     return (
         <div className="WriteComponent">
-            <PreviousButton />
-            <div className="writeTop">
-                글쓰기
-            </div>
+            <MatchbackButton />
+            <div className="writeTop">글쓰기</div>
             <div className="writeButton">
                 <Button
-                    onClick={handleSubmit} // 취소 버튼 클릭 시
-                    backgroundColor="#578E7E" // 초록색
-                    textColor="white"
-                    width="54px"
-                    height="27px"
-                    fontSize="16px"
-                >
-                    취소
-                </Button>
-                <Button
-                    onClick={handleMatchOk} // 업로드 버튼 클릭 시
+                    onClick={handleSubmit}
                     backgroundColor="#578E7E"
                     textColor="white"
                     width="54px"
                     height="27px"
                     fontSize="16px"
-                >
-                    업로드
-                </Button>
+                >취소</Button>
+                <Button
+                    onClick={handleMatchOk}
+                    backgroundColor="#578E7E"
+                    textColor="white"
+                    width="54px"
+                    height="27px"
+                    fontSize="16px"
+                >업로드</Button>
             </div>
-            
+
             <div className="writeInput">
-                <Select 
+                <Select
                     options={options}
                     placeholder="게시판 선택"
                     styles={customStyles}
                     className="Comu-SelectBox"
-                    value={selectedOption} // 기본값 지정
-                    onChange={setSelectedOption}  // 선택 값 업데이트
+                    value={selectedOption}
+                    onChange={setSelectedOption}
                 />
                 <div className="writeLine"></div>
-                {selectedOption && selectedOption.value === 'community' && (
+                {selectedOption.value === 'FREE' && (
                     <InputWhiteField
                         type="text"
                         name="write-title"
@@ -99,7 +110,7 @@ function ComuwritePage() {
                         color="#858585"
                     />
                 )}
-                {selectedOption && selectedOption.value === 'secondhand' && (
+                {selectedOption.value === 'MARKET' && (
                     <>
                         <InputWhiteField
                             type="text"
@@ -129,12 +140,31 @@ function ComuwritePage() {
                     className="MatchContent"
                     placeholder="내용을 입력하세요."
                     style={{
-                        height: selectedOption && selectedOption.value === 'secondhand' ? '81%' : '100%'
+                        height: selectedOption.value === 'MARKET' ? '81%' : '100%'
                     }}
                 ></textarea>
                 <div className="writeLine"></div>
-                <div className="writeDown">
-                    <img src={PictureIcon} className="pictureicon" alt="Picture Icon" />
+                {/* 파일명 표시를 위해 flex 적용 */}
+                <div className="writeDown" style={{ display: 'flex', alignItems: 'center' }}>
+                    <img
+                        src={PictureIcon}
+                        className="pictureicon"
+                        alt="Picture Icon"
+                        style={{ cursor: 'pointer' }}
+                        onClick={onPictureClick}
+                    />
+                    <input
+                        type="file"
+                        accept="image/*"
+                        ref={fileInputRef}
+                        style={{ display: 'none' }}
+                        onChange={handleFileChange}
+                    />
+                    {selectedImage && (
+                        <span style={{ marginLeft: '8px', fontSize: '14px', color: '#333' }}>
+                            {selectedImage.name}
+                        </span>
+                    )}
                 </div>
             </div>
         </div>

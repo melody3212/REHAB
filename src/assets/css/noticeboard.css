@@ -10,6 +10,13 @@
     
 }
 
+.noticeboard-profile-photo {
+  width: 80px;    /* 필요에 따라 이미지 크기 조정 */
+  height: 80px;
+  object-fit: cover;
+  border-radius: 60px;
+}
+
 .noticeboard-title-logo{
     margin-left: 6.92%;
     margin-right: 4.36%;

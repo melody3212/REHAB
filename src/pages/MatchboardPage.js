@@ -8,6 +8,7 @@ import SearchIcon from '../assets/images/searchicon.png';
 import InputWhiteField from '../components/InputWhiteField';
 import Button from '../components/Button';
 import PreviousButton from '../components/PreviousButton';
+import MatchBackButton from '../components/MatchbackButton';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || '';
 
@@ -45,7 +46,7 @@ function MatchBoardPage() {
 
   return (
     <div className="BoardComponent">
-      <PreviousButton />
+      <MatchBackButton />
       <div className="writeTop">매칭 게시판</div>
       <div className="writeMid">
         <div className="search">
