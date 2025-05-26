@@ -20,7 +20,7 @@ function Deletepopup({ onCancel, onConfirm }) {
             backgroundColor='rgba(87, 142, 126, 0.50)' 
             className ="popup-button1" onClick={onCancel}>취소</Button>
         <Button 
-            width='px'
+            width='130px'
             backgroundColor= '#578E7E'
             className ="popup-button2" onClick={onConfirm}>삭제하기</Button>
       </div>

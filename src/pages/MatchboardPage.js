@@ -1,4 +1,3 @@
-// src/pages/MatchBoardPage.jsx
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -11,33 +10,44 @@ import PreviousButton from '../components/PreviousButton';
 import MatchBackButton from '../components/MatchbackButton';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || '';
+const MATCHING_TYPE = 'MATCHING';
 
 function MatchBoardPage() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchPosts = async () => {
+    const fetchMatchingPosts = async () => {
       setLoading(true);
       try {
         const authHeader = localStorage.getItem('authToken');
+        if (!authHeader) throw new Error('No auth token');
         const [, jwt] = authHeader.split(' ');
         const response = await axios.get(
           `${API_BASE_URL}/api/boards`,
           { headers: { Authorization: `Bearer ${jwt}` } }
         );
+
+        // 서버가 filter를 지원하지 않을 경우, 클라이언트에서 직접 필터링
+        const allPosts = response.data.data || [];
+        const filtered = allPosts.filter(
+          (post) => post.boardType === MATCHING_TYPE
+        );
+
         // 최신 글이 위로 오도록 updatedAt 기준 내림차순 정렬
-        const sorted = response.data.data
-          .slice()  // 원본 배열 보호
+        const sorted = filtered
+          .slice()
           .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+
         setPosts(sorted);
       } catch (error) {
-        console.error('Error fetching posts:', error);
+        console.error('Error fetching matching posts:', error);
       } finally {
         setLoading(false);
       }
     };
-    fetchPosts();
+
+    fetchMatchingPosts();
   }, []);
 
   if (loading) {
