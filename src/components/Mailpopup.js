@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import '../assets/css/mailpopup.css';
 import Mailpopupicon from '../assets/images/mailpopupicon.png';
 import InputWhiteField from './InputWhiteField';
-import Button1 from './Button1';
+import Button from './Button';
 
 /**
  * Mailpopup 컴포넌트
@@ -43,7 +43,7 @@ function Mailpopup({ email, onConfirm, errorMessage }) {
       {errorMessage && (
         <div className="mailpopup-error">{errorMessage}</div>
       )}
-      <Button1
+      <Button
         type="button"
         backgroundColor="#578E7E"
         textColor="white"
@@ -51,7 +51,7 @@ function Mailpopup({ email, onConfirm, errorMessage }) {
         onClick={() => onConfirm(inputCode)}
       >
         다음
-      </Button1>
+      </Button>
     </div>
   );
 }

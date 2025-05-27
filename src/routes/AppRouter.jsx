@@ -26,11 +26,14 @@ import ComuqnaPage from '../pages/ComuqnaPage';
 import DealboardPage from '../pages/DealboardPage';
 import DealqnaPage from '../pages/DealqnaPage';
 import ComuwritePage from '../pages/ComuwritePage';
+import ComuwriteokPage from '../pages/ComuwriteokPage';
 import IdsearchPage from '../pages/IdsearchPage';
 import PwsearchPage from '../pages/PwsearchPage';
 import PwreplacePage from '../pages/PwreplacePage';
 import PwreplacepokPage from '../pages/PwreplaceokPage';
 import NoticeboardPage from '../pages/NoticeboardPage';
+import CbtPage from '../pages/CbtPage';
+
 
 /**
  * AppRouter handles both Health app and Board app routes.
@@ -129,6 +132,7 @@ export default function AppRouter({
           <Route path="/matchboard/:id" element={<MatchqnaPage />} />
           <Route path="/matchwrite" element={<MatchwritePage />} />
           <Route path="/matchwriteok" element={<MatchwriteokPage />} />
+          <Route path="/comuwriteok" element={<ComuwriteokPage />} />
           <Route path="/comuboard" element={<ComuboardPage />} />
           <Route path="/comuboard/:id" element={<ComuqnaPage />} />
           <Route path="/dealboard" element={<DealboardPage />} />
@@ -139,6 +143,7 @@ export default function AppRouter({
           <Route path="/pwreplace" element={<PwreplacePage />} />
           <Route path="/pwreplaceok" element={<PwreplacepokPage />} />
           <Route path="/noticeboard" element={<NoticeboardPage />} />
+          <Route path="/cbt" element={<CbtPage />} />
         </>
       )}
 

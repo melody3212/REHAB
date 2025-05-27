@@ -100,3 +100,23 @@ export async function deleteComment(boardId, commentId) {
   );
   return response.data;
 }
+
+export async function searchBoards(keyword) {
+  const authHeader = localStorage.getItem('authToken');
+  if (!authHeader) {
+    throw new Error('No auth token found');
+  }
+  const [, jwt] = authHeader.split(' ');
+  if (!jwt) {
+    throw new Error('Invalid auth token format');
+  }
+
+  const response = await axios.get(
+    `${API_BASE_URL}/api/boards/search`,
+    {
+      params: { keyword },
+      headers: { Authorization: `Bearer ${jwt}` }
+    }
+  );
+  return response.data;
+}

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Menu, Dropdown } from 'antd';
+import Commentmenu from '../assets/images/comment-menu.png';
 import ChatIcon from '../assets/images/chaticon.png';
 import DeleteIcon from '../assets/images/deleteicon.png';
 import DefaultProfile from '../assets/images/default-profile.png';
@@ -30,15 +32,12 @@ function ComuqnaPage() {
       try {
         const authHeader = localStorage.getItem('authToken') || '';
         const [, jwt] = authHeader.split(' ');
-
-        // 게시글 불러오기
         const postRes = await axios.get(
           `${API_BASE_URL}/api/boards/${id}`,
           { headers: { Authorization: `Bearer ${jwt}` } }
         );
         setPost(postRes.data.data);
 
-        // 댓글 불러오기
         const commentRes = await axios.get(
           `${API_BASE_URL}/api/boards/${id}/comments`,
           { headers: { Authorization: `Bearer ${jwt}` } }
@@ -74,6 +73,29 @@ function ComuqnaPage() {
     }
   };
 
+  const handleCommentEdit = (commentId) => {
+    console.log('Edit comment', commentId);
+  };
+
+  const handleCommentDelete = async (commentId) => {
+    try {
+      const authHeader = localStorage.getItem('authToken') || '';
+      const [, jwt] = authHeader.split(' ');
+      await deleteComment(Number(id), commentId);
+      const res = await axios.get(
+        `${API_BASE_URL}/api/boards/${id}/comments`,
+        { headers: { Authorization: `Bearer ${jwt}` } }
+      );
+      setCommentsList(res.data.data || []);
+    } catch (error) {
+      console.error('Error deleting comment:', error);
+    }
+  };
+
+  const handlePostDelete = () => {
+    setShowDeletePopup(true);
+  };
+
   if (loading) return <div>Loading...</div>;
   if (!post) return <div>게시글을 찾을 수 없습니다.</div>;
 
@@ -99,21 +121,17 @@ function ComuqnaPage() {
           <img src={ChatIcon} alt="Chat Icon" className="chatIcon" />
           <img
             src={DeleteIcon}
-            alt="Delete Icon"
+            alt="게시글 삭제"
             className="chatIcon"
             style={{ cursor: 'pointer' }}
-            onClick={() => setShowDeletePopup(true)}
+            onClick={handlePostDelete}
           />
         </div>
       </div>
 
       <div className="writecontent">
         {post.imgUrl && (
-          <img
-            src={post.imgUrl}
-            alt="Content"
-            className="detail-photo"
-          />
+          <img src={post.imgUrl} alt="Content" className="detail-photo" />
         )}
         <div className="matchdetail-title">{post.title}</div>
         <p className="matchdetail-content">{post.content}</p>
@@ -121,23 +139,43 @@ function ComuqnaPage() {
 
         <div className="comments-section">
           {commentsList.length > 0 ? (
-            commentsList.map((comment) => (
-              <div key={comment.id} className="comment">
-                <div className="comment-user-profile">
-                  <img
-                    src={DefaultProfile}
-                    alt={`${comment.username} 프로필`}
-                    className="comment-user-photo"
-                  />
-                  <div>
-                    <span className="commenter-name">{comment.username}</span>
+            commentsList.map((comment) => {
+              const dropdownMenu = (
+                <Menu>
+                  <Menu.Item key="edit" onClick={() => handleCommentEdit(comment.id)}>
+                    수정
+                  </Menu.Item>
+                  <Menu.Item key="delete" onClick={() => handleCommentDelete(comment.id)}>
+                    삭제
+                  </Menu.Item>
+                </Menu>
+              );
+              return (
+                <div key={comment.id} className="comment">
+                  <div className="comment-user-profile">
+                    <img
+                      src={DefaultProfile}
+                      alt={`${comment.username} 프로필`}
+                      className="comment-user-photo"
+                    />
+                    <div>
+                      <span className="commenter-name">{comment.username}</span>
+                    </div>
+                    <div className="comment-midline" />
+                    <p className="comment-content">{comment.content}</p>
+                    <Dropdown overlay={dropdownMenu} trigger={['click']} placement="bottomRight">
+                      <img
+                        src={Commentmenu}
+                        alt="코멘트 메뉴"
+                        className="comment-menu"
+                        style={{ cursor: 'pointer' }}
+                      />
+                    </Dropdown>
                   </div>
-                  <div className="comment-midline" />
-                  <p className="comment-content">{comment.content}</p>
+                  <div className="comment-endline" />
                 </div>
-                <div className="comment-endline" />
-              </div>
-            ))
+              );
+            })
           ) : (
             <p></p>
           )}
@@ -161,22 +199,16 @@ function ComuqnaPage() {
 
       {showDeletePopup && (
         <>
-          <div
-            className="popup-overlay"
-            onClick={() => setShowDeletePopup(false)}
-          />
+          <div className="popup-overlay" onClick={() => setShowDeletePopup(false)} />
           <Deletepopup
             onCancel={() => setShowDeletePopup(false)}
             onConfirm={async () => {
               try {
                 const boardId = Number(id);
-                // 1) 댓글 전부 삭제
                 for (const c of commentsList) {
                   await deleteComment(boardId, c.id);
                 }
-                // 2) 게시글 삭제
                 await deleteBoard(boardId);
-                // 3) 목록으로 이동
                 navigate('/comuboard');
               } catch (err) {
                 console.error('Error deleting comments or post:', err.response?.data || err);

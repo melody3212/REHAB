@@ -102,7 +102,7 @@ const Home = ({ schedules, checkedStates, setCheckedStates }) => {
           text={"인지행동치료"}
           type={"basic"}
           icon={cbtIcon}
-          onClick={() => nav(`/exercise`)}
+          onClick={() => nav(`/cbt`)}
         />
       </div>
 

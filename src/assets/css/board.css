@@ -3,7 +3,7 @@
     width: 100%;
     height: 100%;
     position: relative;
-      overflow: hidden; 
+      overflow: auto; 
 }
 
 .writeTop {
@@ -266,4 +266,13 @@ margin-top:10px;
   margin-right: 25px;
   align-items: center; /* 수직 중앙 정렬 */
   gap: 8px;            /* 아이템 간격 5px */
+}
+
+.comment-menu{
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    aspect-ratio: 1/1;
+    margin-left: auto;
+    margin-right:25px;
 }

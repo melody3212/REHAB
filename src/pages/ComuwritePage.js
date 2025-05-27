@@ -25,18 +25,19 @@ function ComuwritePage() {
   const [selectedImage, setSelectedImage] = useState(null);
   const fileInputRef = useRef();
 
-  // 1) presigned URL 발급 (GET)
-  const getPresignedUrl = async (fileName) => {
+  // 1) presigned URL 발급 (GET) - S3 컨트롤러 사용
+  const getPresignedUrl = async (type, fileName) => {
     const authHeader = localStorage.getItem('authToken') || '';
     const [, jwt] = authHeader.split(' ');
     const response = await axios.get(
-      `${API_BASE_URL}/api/boards/preSigned-url`,
+      `${API_BASE_URL}/api/files/upload-url/${type}`,
       {
         params: { filename: fileName },
         headers: { Authorization: `Bearer ${jwt}` }
       }
     );
-    return response.data; // { uploadUrl, fileUrl }
+    // response.data.data: { presignedUrl, accessUrl, key }
+    return response.data.data;
   };
 
   // 2) S3 PUT 업로드
@@ -50,12 +51,12 @@ function ComuwritePage() {
     try {
       let imgUrl;
       if (selectedImage) {
-        // presigned URL 요청
-        const { uploadUrl, fileUrl } = await getPresignedUrl(selectedImage.name);
+        // presigned URL 요청 (type: 게시글 이미지)
+        const { presignedUrl, accessUrl } = await getPresignedUrl('board', selectedImage.name);
         // S3에 PUT으로 업로드
-        await uploadToS3(uploadUrl, selectedImage);
-        // 화면에 사용할 이미지 URL (?
-        imgUrl = fileUrl.split('?')[0];
+        await uploadToS3(presignedUrl, selectedImage);
+        // 화면에 사용할 이미지 URL
+        imgUrl = accessUrl;
       }
 
       // 게시글 작성 API 호출 (이미지 URL 포함)
@@ -69,7 +70,7 @@ function ComuwritePage() {
       };
 
       await boards(payload);
-      navigate('/matchwriteok');
+      navigate('/comuwriteok');
     } catch (err) {
       console.error('게시글 작성 실패:', err.response?.data || err);
       alert(err.response?.data?.message || '게시글 작성 중 오류가 발생했습니다.');
@@ -108,7 +109,7 @@ function ComuwritePage() {
           type="text"
           name="write-title"
           placeholder={selectedOption.value === 'FREE' ? '제목' : '상품명'}
-          className={selectedOption.value === 'FREE' ? 'MatchTitle' : 'Matchprice'}
+          className={selectedOption.value === 'FREE' ? 'ComuTitle' : 'Matchprice'}
           placeholderColor="#858585"
           fontWeight="700"
           fontSize="20px"

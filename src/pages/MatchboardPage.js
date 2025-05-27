@@ -6,8 +6,9 @@ import '../assets/css/board.css';
 import SearchIcon from '../assets/images/searchicon.png';
 import InputWhiteField from '../components/InputWhiteField';
 import Button from '../components/Button';
-import PreviousButton from '../components/PreviousButton';
 import MatchBackButton from '../components/MatchbackButton';
+import PreviousButton from '../components/PreviousButton';
+import { searchBoards } from '../api/board';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || '';
 const MATCHING_TYPE = 'MATCHING';
@@ -15,40 +16,61 @@ const MATCHING_TYPE = 'MATCHING';
 function MatchBoardPage() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [keyword, setKeyword] = useState('');
+
+  const fetchMatchingPosts = async () => {
+    setLoading(true);
+    try {
+      const authHeader = localStorage.getItem('authToken');
+      if (!authHeader) throw new Error('No auth token');
+      const [, jwt] = authHeader.split(' ');
+      const response = await axios.get(
+        `${API_BASE_URL}/api/boards`,
+        { headers: { Authorization: `Bearer ${jwt}` } }
+      );
+
+      const allPosts = response.data.data || [];
+      const filtered = allPosts.filter(
+        (post) => post.boardType === MATCHING_TYPE
+      );
+      const sorted = filtered
+        .slice()
+        .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+
+      setPosts(sorted);
+    } catch (error) {
+      console.error('Error fetching matching posts:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchMatchingPosts = async () => {
-      setLoading(true);
-      try {
-        const authHeader = localStorage.getItem('authToken');
-        if (!authHeader) throw new Error('No auth token');
-        const [, jwt] = authHeader.split(' ');
-        const response = await axios.get(
-          `${API_BASE_URL}/api/boards`,
-          { headers: { Authorization: `Bearer ${jwt}` } }
-        );
-
-        // 서버가 filter를 지원하지 않을 경우, 클라이언트에서 직접 필터링
-        const allPosts = response.data.data || [];
-        const filtered = allPosts.filter(
-          (post) => post.boardType === MATCHING_TYPE
-        );
-
-        // 최신 글이 위로 오도록 updatedAt 기준 내림차순 정렬
-        const sorted = filtered
-          .slice()
-          .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
-
-        setPosts(sorted);
-      } catch (error) {
-        console.error('Error fetching matching posts:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchMatchingPosts();
   }, []);
+
+  const handleSearch = async () => {
+    setLoading(true);
+    try {
+      if (!keyword.trim()) {
+        await fetchMatchingPosts();
+        return;
+      }
+      const res = await searchBoards(keyword);
+      const allResults = res.data || [];
+      const filtered = allResults.filter(
+        (post) => post.boardType === MATCHING_TYPE
+      );
+      const sorted = filtered
+        .slice()
+        .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+      setPosts(sorted);
+    } catch (error) {
+      console.error('Error searching posts:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -61,13 +83,26 @@ function MatchBoardPage() {
       <div className="writeMid">
         <div className="search">
           <div className="search-main">
-            <img src={SearchIcon} alt="Search Icon" className="searchIcon" />
+            <img
+              src={SearchIcon}
+              alt="Search Icon"
+              className="searchIcon"
+              style={{ cursor: 'pointer' }}
+              onClick={handleSearch}
+            />
             <InputWhiteField
               type="text"
               name="board-search"
               placeholder="검색하기"
               className="board-search"
               fontSize="15px"
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  handleSearch();
+                }
+              }}
             />
           </div>
           <div className="search-line" />
