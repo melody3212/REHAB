@@ -5,9 +5,10 @@ import '../assets/css/signupPage.css';
 import Button from '../components/Button';
 import Checkbox from '../components/Checkbox';
 import InputField from '../components/InputField';
-import { signupUser, sendVerificationMail, verifyMail } from '../api/auth';
+import { signupUser, sendVerificationMail, verifyMailForSignup } from '../api/auth';
 import Mailpopup from '../components/Mailpopup';
 import PreviousButton from '../components/PreviousButton';
+import { extractErrorMessage } from '../utils/errorUtils'; // 반환되는 error message
 
 const BIRTHDAY_YEAR_LIST = Array.from({ length: 15 }, (_, i) => `${1990 + i}`);
 const BIRTHDAY_MONTH_LIST = Array.from({ length: 12 }, (_, i) => `${i + 1}`);
@@ -66,23 +67,22 @@ function SignupPage() {
       setVerificationMessage('이메일을 입력해주세요.');
       return;
     }
-    const key = generateVerificationCode();
-    setVerificationKey(key);
 
     try {
-      await sendVerificationMail({ email, verificationKey: key });
+      await sendVerificationMail({ email, verificationKey: '' });
       setVerificationMessage('인증 메일이 발송되었습니다. 이메일을 확인해주세요.');
       setShowMailPopup(true);
       setPopupError('');
     } catch (err) {
-      setVerificationMessage(`오류: ${err.message}`);
+      const errorMessage = extractErrorMessage(err);
+      setVerificationMessage(`오류: ${errorMessage}`);
     }
   };
 
   // 팝업에서 인증번호 확인
   const handleVerifyCode = async (inputCode) => {
     try {
-      await verifyMail({
+      await verifyMailForSignup({
         email: `${email1}@${email2}`,
         verificationKey: inputCode,
       });
@@ -91,8 +91,9 @@ function SignupPage() {
       setShowMailPopup(false);
       setVerificationMessage('이메일이 성공적으로 인증되었습니다.');
       setPopupError('');
-    } catch {
-      setPopupError('잘못된 인증번호입니다.');
+    } catch (err) {
+      const errorMessage = extractErrorMessage(err);
+      setPopupError(`오류: ${errorMessage}`);
     }
   };
 

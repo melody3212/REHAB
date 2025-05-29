@@ -6,7 +6,7 @@ import '../assets/css/pwsearch.css';
 import Button from '../components/Button';
 import InputField from '../components/InputField';
 import Mailpopup from '../components/Mailpopup';
-import { sendNewPasswordMail, verifyMail } from '../api/auth';
+import { sendNewPasswordMail, verifyMail, verifyMailForNewPassword } from '../api/auth';
 
 
 export default function IdsearchPage() {
@@ -20,11 +20,9 @@ export default function IdsearchPage() {
 
   const handleSendCode = async () => {
     if (!email.trim()) return;
-    const key = generateCode();
-    setVerificationKey(key);
     try {
       // 이메일과 인증키를 서버에 전송
-      await sendNewPasswordMail({ email, verificationKey: key });
+      await sendNewPasswordMail({ email, verificationKey: '' });
       setPopupError('');
       setShowMailPopup(true);
     } catch (err) {
@@ -37,7 +35,7 @@ export default function IdsearchPage() {
   const handleVerifyCode = async (inputCode) => {
     if (!inputCode) return;
     try {
-      const res = await verifyMail({ email, verificationKey: inputCode });
+      const res = await verifyMailForNewPassword({ email, verificationKey: inputCode });
       // 백엔드 응답 코드에 따라 처리 (예: 에러 코드로 시작하면 실패)
       if (res.code && res.code.startsWith('A')) {
         // 인증 실패

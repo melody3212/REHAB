@@ -18,6 +18,20 @@ export async function sendVerificationMail({ email, verificationKey }) {
 }
 
 /**
+ * 회원가입 인증번호 검증 API (추가)
+ * @param {{ email: string, verificationKey: string }} params
+ * @returns {Promise<object>}
+ */
+export async function verifyMailForSignup({ email, verificationKey }) {
+  const response = await axios.post(
+    `${API_BASE_URL}/api/user-auth/verification-mail`,
+    { email, verificationKey },
+    { headers: { 'Content-Type': 'application/json' } }
+  );
+  return response.data;
+}
+
+/**
  * 비밀번호 재설정용 인증 메일 발송 API
  * @param {{ email: string, verificationKey: string }} params
  * @returns {Promise<object>}
@@ -32,11 +46,11 @@ export async function sendNewPasswordMail({ email, verificationKey }) {
 }
 
 /**
- * 이메일 인증 코드 검증 API
+ * 비밀번호 인증번호 검증 + 새로운 비밀번호 전송 API (변경) -> 새로운 비밀번호가 메일로 전송됨.
  * @param {{ email: string, verificationKey: string }} params
  * @returns {Promise<object>}
  */
-export async function verifyMail({ email, verificationKey }) {
+export async function verifyMailForNewPassword({ email, verificationKey }) {
   const response = await axios.post(
     `${API_BASE_URL}/api/user-search/send-new-password-mail`,
     { email, verificationKey },
