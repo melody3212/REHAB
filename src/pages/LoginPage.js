@@ -7,6 +7,8 @@ import Button from '../components/Button';
 import Checkbox from '../components/Checkbox';
 import InputField from '../components/InputField';
 import { loginUser } from '../api/auth';
+import { getMessaging, getToken } from 'firebase/messaging';
+import { requestPermission } from '../utils/firebase'; // 경로 확인 필수
 import PreviousButton from '../components/PreviousButton';
 
 function LoginPage() {
@@ -18,8 +20,21 @@ function LoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let fcmToken = null; // fcm 토큰
+
+    //fcm token 가져오기
     try {
-      await loginUser({ accountId, password });
+      fcmToken = await requestPermission();
+      if (fcmToken) {
+        console.log('FCM Token:', fcmToken);
+        // 서버에 토큰 저장 등의 작업 수행
+      }
+    } catch (err) {
+      console.warn('FCM 처리 실패:', err);
+    }
+
+    try {
+      await loginUser({ accountId, password ,fcmToken});
       // 로그인 성공 시, 메인 페이지로 이동
       navigate('/');
     } catch (error) {
