@@ -18,7 +18,7 @@ export async function getMyInfo() {
   }
 
   const response = await axios.post(
-    `${API_BASE_URL}/api/user-auth/my-info`,
+    `${API_BASE_URL}/api/user-info/my-info`,
     {},
     {
       headers: {
