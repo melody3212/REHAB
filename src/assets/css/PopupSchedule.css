@@ -23,17 +23,19 @@
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    padding: 0 16px 8px 0; /* 오른쪽과 아래 여백 */
+    padding: 0px; /* 오른쪽과 아래 여백 */
   }
 
 
   .modal-content.no-padding {
     background: #ececec;
     border-radius: 20px;
-    width: 420px;
+    width: 350px;
     max-width: 90%;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     overflow: hidden;
+    padding:0px;
+    margin: 0px;
   }
   
   /* 팝업 모드일 때 배경 제거 */
@@ -47,7 +49,6 @@
     display: flex;
     justify-content: center;
     background-color: #578E7E;
-    padding: 0;
     border-radius: 16px 16px 0 0;
   }
   
@@ -56,6 +57,7 @@
     font-size: 15px;
     font-weight: 500;
     color: white;
+    padding: 8px;
   }
   
   /* 팝업용 체크리스트 박스 */

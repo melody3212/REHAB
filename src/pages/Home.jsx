@@ -5,7 +5,6 @@ import '../assets/css/Home.css';
 
 import Calendar from '../components/Calendar';
 import Profile from '../components/Profile';
-import Walking from '../components/Walking';
 import TodaySchedule from "../components/TodaySchedule";
 
 import scheduleIcon from "../assets/images/schedule.png";
@@ -14,7 +13,7 @@ import cbtIcon from "../assets/images/cbt.png";
 import Button1 from '../components/Button1';
 import matchComIcon from "../assets/images/match_com.png";        // ← import!
 import userComIcon from "../assets/images/user_com.png";    
-
+import logo from "../assets/images/logo.png";
 
 const Home = ({ schedules, checkedStates, setCheckedStates }) => {
   const nav = useNavigate();
@@ -33,15 +32,20 @@ const Home = ({ schedules, checkedStates, setCheckedStates }) => {
     <div className="container">
       <div className="logout">
         <Button1 
+          text="마이페이지"
+          type="profile"
+          onClick={() => nav('/')}
+        />
+        <Button1 
           text={"로그아웃"}
           type={"profile"}
           onClick={() => nav(`/`)}
         />
       </div>
-
-      <div className="info">
+      <img className="logo_img" src={logo} alt="로고" />
+      {/* <div className="info">
         <Profile />
-      </div>
+      </div> */}
 
       <div className="top">
         <div className="schedule">
@@ -52,9 +56,9 @@ const Home = ({ schedules, checkedStates, setCheckedStates }) => {
           />
         </div>
 
-        <div className="steps">
+        {/* <div className="steps">
           <Walking />
-        </div>
+        </div> */}
       </div>
 
       <div className="community">

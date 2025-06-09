@@ -63,7 +63,7 @@ const TodaySchedule = ({ schedules, checkedStates, onCheckboxChange }) => {
             <div className="modal-top">
               <Button1
                 text="X"
-                type="delete"
+                type="esc"
                 onClick={() => setShowModal(false)}
               />
             </div>

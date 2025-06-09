@@ -11,7 +11,10 @@
     color: #00796b;
 }
 
-
+.logo_img{
+    height:90px;
+    margin: 35px;
+}
 
 .info{
     display: flex;
@@ -65,7 +68,6 @@
 
   }
   
-
 
 .calendar{
     justify-content:center ;

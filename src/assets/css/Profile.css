@@ -18,8 +18,8 @@
 
 .Profile .info_profile{
     text-align: left;
-    line-height: 1; /* 기본값 1.5보다 줄이기 */
-    font-weight: bold;
+    line-height: 1.75;
+    
 
 }
 

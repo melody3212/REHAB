@@ -4,26 +4,28 @@
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
-  height: 200%;
-  background: rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
-}
-
-/* ✅ 모달 박스 영역 */
-.ExerciseTemModal-content {
-  background: white;
-  padding: 50px 30px;
-  border-radius: 12px;
   width: 80%;
-  max-width: 400px;
-  height: 450px;
+  max-width: 320px;
+
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: center; /* ✅ 중앙 정렬 */
+}
+
+/* 모달 박스 영역 */
+.ExerciseTemModal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* ✅ 간격 살짝 늘림 */
+  width: 100%;
+  margin: 10px;
+  padding: 10px;
+  height: 450px;
 }
 
 .ExerciseTemModal-content >h3{
