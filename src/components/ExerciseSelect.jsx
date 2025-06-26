@@ -36,7 +36,7 @@ const ExerciseSelect = ({ exercises, onSave, onClose }) => {
               }`}
               onClick={() => toggleSelect(ex.id)}
             >
-              {ex.name}
+              {ex.content}
             </li>
           ))}
         </ul>

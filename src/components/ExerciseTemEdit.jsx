@@ -3,26 +3,27 @@ import Button1 from "./Button1";
 import "../assets/css/ExerciseTemModal.css"; // ✅ 동일한 CSS 재사용
 
 const ExerciseTemEdit = ({ exercise, onClose, onSave }) => {
-  const [name, setName] = useState(exercise.name);
+  const [content, setContent] = useState(exercise.content);
   const [description, setDescription] = useState(exercise.description);
   const [sets, setSets] = useState(exercise.sets);
   const [reps, setReps] = useState(exercise.reps);
 
   const handleSave = () => {
-    if (!name || !sets || !reps) {
+    if (!content || !sets || !reps) {
       alert("이름, 세트, 횟수를 모두 입력해주세요!");
       return;
     }
 
     const edited = {
       ...exercise,
-      name,
+      content,
       description,
       sets,
       reps
     };
 
     onSave(edited);
+    onClose(); //수정 후 모달 닫기 
   };
 
   return (
@@ -32,8 +33,8 @@ const ExerciseTemEdit = ({ exercise, onClose, onSave }) => {
         <input
           type="text"
           placeholder="운동 이름"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
         />
         <textarea
           placeholder="운동 설명"

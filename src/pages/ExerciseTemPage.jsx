@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ExerciseTemItem from "../components/ExerciseTemItem";
 import ExerciseTemAdd from "../components/ExerciseTemAdd";
@@ -9,23 +9,78 @@ import makeIcon from "../assets/images/make.png";
 import searchIcon from "../assets/images/search.png";
 import "../assets/css/ExerciseTemPage.css";
 
+import { getExercise, createExercise, updateExercise } from "../api/exercise";
+
 const ExerciseTemPage = ({ exercises, setExercises }) => {
   const nav = useNavigate();
   const [showAddModal, setShowAddModal] = useState(false);   // ✅ 추가 모달 상태
   const [editTarget, setEditTarget] = useState(null);         // ✅ 수정 대상 운동
 
+    // 운동 목록
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getExercise(); // ✅ 배열이어야 함
+        setExercises(data);
+      } catch (err) {
+        console.error("운동 불러오기 실패:", err);
+      }
+    };
+    fetchData();
+  }, [setExercises]);
+
   // ✅ 새로운 운동 추가
-  const handleAddExercise = (newExercise) => {
-    setExercises((prev) => [...prev, newExercise]);
+  const handleAddExercise = async (newExercise) => {
+      try {
+        const savedFromServer = await createExercise({
+          content: newExercise.content,
+          description: newExercise.description,
+          sets: newExercise.sets,
+          reps: newExercise.reps
+        });
+      console.log(savedFromServer)
+
+      setExercises((prev) => [...prev, savedFromServer]);
+      setShowAddModal(false);
+    } catch (error) {
+      console.error("운동 추가 실패:", error);
+      alert("운동 추가에 실패했습니다.");
+    }
   };
 
-  // ✅ 기존 운동 수정 저장
-  const handleEditExercise = (editedExercise) => {
-    setExercises((prev) =>
-      prev.map((ex) => (ex.id === editedExercise.id ? editedExercise : ex))
-    );
-    setEditTarget(null); // ✅ 모달 닫기
+  // ✅ 기존 운동 수정
+  const handleEditExercise = async (editedExercise) => {
+    try {
+      const updated = await updateExercise({
+        exerciseId: editedExercise.id,
+        content: editedExercise.content,
+        description: editedExercise.description,
+        sets: editedExercise.sets,
+        reps: editedExercise.reps
+      });
+
+      setExercises((prev) =>
+        prev.map((ex) => (ex.id === updated.id ? updated : ex))
+      );
+      setEditTarget(null);
+    } catch (error) {
+      console.error("운동 수정 실패:", error);
+      alert("운동 수정에 실패했습니다.");
+    }
   };
+  
+//   // ✅ 새로운 운동 추가
+//   const handleAddExercise = (newExercise) => {
+//     setExercises((prev) => [...prev, newExercise]);
+//   };
+
+//   // ✅ 기존 운동 수정 저장
+//   const handleEditExercise = (editedExercise) => {
+//     setExercises((prev) =>
+//       prev.map((ex) => (ex.id === editedExercise.id ? editedExercise : ex))
+//     );
+//     setEditTarget(null); // ✅ 모달 닫기
+//   };
 
   return (
     <div className="exercise-tem-page">
@@ -38,9 +93,9 @@ const ExerciseTemPage = ({ exercises, setExercises }) => {
       {/* ✅ 운동 목록 렌더링 */}
       <div className="Tem-list">
         {exercises.length > 0 ? (
-          exercises.map((exercise) => (
+          exercises.map((exercise, index) => (
             <ExerciseTemItem
-              key={exercise.id}
+              key={exercise.id??index}
               exercise={exercise}
               setExercises={setExercises}
               onEdit={() => setEditTarget(exercise)} // ✅ 수정 버튼 눌렀을 때

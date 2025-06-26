@@ -3,16 +3,15 @@ import "../assets/css/ExerciseTemModal.css";
 import Button1 from "./Button1";
 
 const ExerciseTemAdd = ({ onClose, onSave }) => {
-  const [name, setName] = useState("");
+  const [content, setContent] = useState("");
   const [description, setDescription] = useState("");
   const [sets, setSets] = useState(3);
   const [reps, setReps] = useState(10);
 
   const handleExerciseAdd = () => {
-    if (!name.trim()) return alert("운동 이름을 입력해주세요.");
+    if (!content.trim()) return alert("운동 이름을 입력해주세요.");
     const newExercise = {
-      id: Date.now(),
-      name,
+      content,
       description,
       sets,
       reps
@@ -28,8 +27,8 @@ const ExerciseTemAdd = ({ onClose, onSave }) => {
         <input
           type="text"
           placeholder="운동 이름"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
         />
         <textarea
           placeholder="운동 설명"
